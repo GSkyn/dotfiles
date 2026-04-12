@@ -1,0 +1,119 @@
+configuration {
+    modi: "drun";
+    font: "CaskaydiaCove Nerd Font 14";
+    show-icons: true;
+    icon-theme: "Papirus";
+    drun-display-format: "{name}";
+    sidebar-mode: false;
+}
+
+* {
+    /* Rosé Pine Moon Palette */
+    base: #232136;
+    surface: #2a273f;
+    overlay: #393552;
+    muted: #6e6a86;
+    subtle: #908caa;
+    text: #e0def4;
+    love: #eb6f92;
+    gold: #f6c177;
+    rose: #ea9a97;
+    pine: #3e8fb0;
+    foam: #9ccfd8;
+    iris: #c4a7e7;
+
+    /* Global defaults */
+    background-color: transparent;
+    text-color: @text;
+}
+
+window {
+    transparency: "real";
+    background-color: @base;
+    text-color: @text;
+    border: 2px;
+    border-color: @overlay;
+    border-radius: 0px; 
+    width: 600px;
+    padding: 20px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ inputbar, listview ];
+    spacing: 20px;
+}
+
+inputbar {
+    background-color: @surface;
+    text-color: @text;
+    border-radius: 0px;
+    padding: 12px 15px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @rose;
+    padding: 0px 10px 0px 0px;
+    font: "CaskaydiaCove Nerd Font 14";
+}
+
+entry {
+    background-color: transparent;
+    text-color: @text;
+    placeholder: "Search";
+    placeholder-color: @muted;
+    blink: true;
+}
+
+listview {
+    background-color: transparent;
+    columns: 2;
+    lines: 7;
+    spacing: 5px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+    scrollbar: false;
+    border: 0px;
+}
+
+element {
+    background-color: transparent;
+    text-color: @subtle;
+    padding: 10px;
+    border-radius: 0px;
+}
+
+element-icon {
+    background-color: transparent;
+    size: 24px;
+    margin: 0px 15px 0px 0px;
+    cursor: inherit;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+    cursor: inherit;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @subtle;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @subtle;
+}
+
+/* How the currently selected app looks */
+element selected.normal {
+    background-color: @overlay;
+    text-color: @text;
+    border: 0px 0px 0px 4px;
+    border-color: @love;
+}
