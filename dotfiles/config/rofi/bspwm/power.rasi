@@ -1,0 +1,82 @@
+configuration {
+    /* Kept the larger icon font size for the horizontal menu buttons */
+    font: "GohuFont uni14 Nerd Font 24";
+    show-icons: false;
+}
+
+@theme "/dev/null"
+
+* {
+    /* Your exact Gruvbox palette */
+    bg: #222222;
+    bg-alt: #3c3836;
+    fg: #ebdbb2;
+    black: #000000;
+    green: #8ec07c;
+    blue: #83a598;
+    border-dark: #1d2021;
+
+    /* Global reset matching your drun config */
+    background-color: transparent;
+    text-color: @fg;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+window {
+    location: center;
+    width: 850px; 
+    background-color: @bg;
+    
+    /* Gruvbox Window Borders */
+    border: 3px solid;
+    border-color: @border-dark;
+    padding: 8px;
+}
+
+mainbox {
+    spacing: 8px;
+    children: [ listview ];
+}
+
+listview {
+    columns: 5;
+    lines: 1;
+    spacing: 12px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+    scrollbar: false;
+    border: 0px;
+}
+
+element {
+    /* Chunky padding for large horizontal buttons */
+    padding: 15px 10px; 
+    
+    /* Invisible default border to prevent layout shifting on selection */
+    border: 2px solid;
+    border-color: transparent;
+    background-color: @bg;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color: @bg;
+}
+
+element selected.normal {
+    /* Your exact active Gruvbox selection block */
+    background-color: @green;
+    text-color: @black;
+    border: 2px solid;
+    border-color: @border-dark;
+}
+
+element-text {
+    vertical-align: 0.5;
+    horizontal-align: 0.5; /* Centers the icon inside the button */
+    text-color: inherit;
+    background-color: transparent;
+}

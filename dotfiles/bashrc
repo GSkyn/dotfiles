@@ -1,0 +1,35 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+
+# History Settings
+export HISTCONTROL=ignoreboth          # Don't save duplicate lines or lines starting with space
+export HISTSIZE=10000                  # Big history is better
+export HISTFILESIZE=20000
+shopt -s histappend                    # Append to history instead of overwriting
+
+# Shell Options
+shopt -s autocd                        # Just type a directory name to cd into it
+shopt -s checkwinsize                  # Update window size after each command
+shopt -s globstar                      # Enable recursive globbing (**)
+
+# FZF Integration (If installed)
+if [ -f /usr/share/fzf/completion.bash ]; then
+  source /usr/share/fzf/completion.bash
+  source /usr/share/fzf/key-bindings.bash
+fi
+
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias clipboardclear='greenclip clear'
+alias hypr='start-hyprland'
+
+PS1='[\u@\h \W]\$ '
+
+# Initialize Starship
+eval "$(starship init bash)"
+

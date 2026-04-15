@@ -1,0 +1,91 @@
+configuration {
+    font: "GohuFont uni14 Nerd Font 12";
+    show-icons: false;
+}
+
+@theme "/dev/null"
+
+* {
+    bg: #222222;
+    bg-alt: #3c3836;
+    fg: #ebdbb2;
+    black: #000000;
+    blue: #83a598;
+    border-dark: #1d2021;
+
+    background-color: transparent;
+    text-color: @fg;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+window {
+    location: north west;
+    y-offset: 10px;
+    x-offset: 5px;
+    width: 20%; /* Slightly wider so the search bar doesn't look squished */
+    background-color: @bg;
+    border: 3px solid;
+    border-color: @border-dark;
+    padding: 8px;
+}
+
+mainbox {
+    spacing: 8px;
+    children: [ inputbar, listview ]; /* Brought the search bar back! */
+}
+
+/* Stitched Input Block */
+inputbar {
+    spacing: 0px;
+    background-color: @bg;
+    border: 2px solid;
+    border-color: @border-dark;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    background-color: @blue;
+    text-color: @black;
+    padding: 8px 14px;
+    border: 0px 2px 0px 0px;
+    border-color: @border-dark;
+    /* You can put an icon here in the script, so we leave this ready */
+}
+
+entry {
+    background-color: @bg-alt;
+    text-color: @fg;
+    padding: 8px 12px;
+    placeholder: "Search Apps...";
+    vertical-align: 0.5;
+}
+
+listview {
+    lines: 8; /* This makes it a long menu */
+    columns: 1; /* Strictly one column */
+    spacing: 4px;
+    scrollbar: false;
+    border: 0px;
+}
+
+element {
+    padding: 6px 10px;
+    border: 2px solid;
+    border-color: transparent;
+    background-color: @bg;
+}
+
+element selected.normal {
+    background-color: @blue;
+    text-color: @black;
+    border: 2px solid;
+    border-color: @border-dark;
+}
+
+element-text {
+    vertical-align: 0.5;
+    text-color: inherit;
+    background-color: transparent;
+}

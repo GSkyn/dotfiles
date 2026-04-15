@@ -1,0 +1,142 @@
+# ----------------------------------------------------------------              
+# Program Binds
+# ----------------------------------------------------------------              
+
+# Reload bspwm
+super + shift + n
+    bspc wm -r
+
+# Terminal (Mod + Return)
+super + Return
+    kitty
+
+# App Launcher (Mod + D) - Switched to dmenu
+super + d
+    rofi -show drun
+
+# Session Menu (Mod + Shift + E)
+# Note: You may need a tool like 'powermenu' or just 'bspc quit'
+super + shift + e
+    ~/.config/rofi/bspwm/powermenu.sh
+
+# Reload sxhkd (Super + Escape)
+super + Escape
+    pkill -USR1 -x sxhkd
+
+# Wallpaper selector
+super + shift + w
+    ~/.config/custom-script/x11-wall-select.sh
+
+# clipboard
+super + shift + c
+ rofi -modi "clipboard:greenclip print" -show clipboard -run-command '\{cmd\}' -theme-str 'configuration \{ show-icons: false; \}' -theme-str 'element \{ children: [ element-text ]; \}'
+
+# ----------------------------------------------------------------              
+# Window / Focus Management (Arrow Keys)
+# ----------------------------------------------------------------              
+
+# Close Window
+super + q
+    bspc node -c
+
+# Focus windows in directions
+super + {Left,Down,Up,Right}
+    bspc node -f {west,south,north,east}
+
+# Move windows in directions
+super + shift + {Left,Down,Up,Right}
+    bspc node -s {west,south,north,east}
+
+# Toggle Fullscreen
+super + shift + f
+    bspc node -t \~fullscreen
+
+# Toggle Floating
+super + shift + space
+    bspc node -t \~floating
+
+# alternate between the tiled and monocle layout
+super + f
+	bspc desktop -l next
+
+super + r
+    bspc node -t pseudo_tiled 
+
+super + e
+    bspc node -t tiled 
+# DWM-style smart resize using Super + Control
+super + ctrl + Left
+    bspc node -z left -20 0 || bspc node -z right -20 0
+
+super + ctrl + Down
+    bspc node -z bottom 0 20 || bspc node -z top 0 20
+
+super + ctrl + Up
+    bspc node -z top 0 -20 || bspc node -z bottom 0 -20
+
+super + ctrl + Right
+    bspc node -z right 20 0 || bspc node -z left 20 0
+
+# Split horizontally (spawn next window to the right)
+super + a
+    bspc node -p west
+
+# Split vertically (spawn next window below)
+super + w
+    bspc node -p north
+
+super + s
+    bspc node -p south
+
+super + x
+    bspc node -p east
+
+super + c
+    bspc node -p cancel
+# ----------------------------------------------------------------              
+# Workspace (Desktop) Management
+# ----------------------------------------------------------------              
+
+# Focus Workspaces 1-9
+super + {1-9}
+    bspc desktop -f '^{1-9}'
+
+# Move Column (Node) to Workspace 1-9
+super + shift + {1-9}
+    bspc node -d '^{1-9}'
+
+# Focus Next/Prev Workspace (Page Up/Down)
+super + {Next,Prior}
+    bspc desktop -f {next,prev}.local
+
+# ----------------------------------------------------------------              
+# Audio & Media Keys (Pipewire/Wireplumber & Playerctl)
+# ----------------------------------------------------------------              
+
+# Volume
+XF86AudioRaiseVolume
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0
+
+XF86AudioLowerVolume
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-
+
+XF86AudioMute
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+XF86AudioMicMute
+    wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+
+# Media Control
+XF86Audio{Play,Stop,Prev,Next}
+    playerctl {play-pause,stop,previous,next}
+
+# ----------------------------------------------------------------              
+# Screenshots (Assuming 'maim' or 'scrot' for X11/bspwm)
+# ----------------------------------------------------------------              
+
+# Full Screenshot
+super + backslash
+    maim ~/Pictures/Screenshots/$(date +%s).png && xclip -selection clipboard -t image/png -i ~/Pictures/Screenshots/$(date +%s).png && notify-send "Full Screenshot" "Saved and copied to clipboard"
+# Area Screenshot
+super + shift + backslash
+    maim -s | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -selection clipboard -t image/png && notify-send "Area Screenshot" "Saved and copied to clipboard"

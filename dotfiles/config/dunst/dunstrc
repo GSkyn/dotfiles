@@ -1,0 +1,54 @@
+[global]
+    font = "GohuFont uni11 Nerd Font Propo 12"
+    
+    # Allow a small subset of HTML markup
+    markup = yes
+    format = "<b>%s</b>\n%b"
+    
+    # Sort messages by urgency
+    sort = yes
+    
+    # Alignment of message text
+    alignment = left
+    
+    # Geometry and positioning
+    width = 300
+    height = 100
+    origin = top-right
+    # Offsets the notification perfectly below your 20pt Polybar + gaps
+    offset = 15x35
+    
+    # Sharp, boxy aesthetics matching your Rofi
+    corner_radius = 0
+    frame_width = 3
+    frame_color = "#1d2021"
+    separator_color = frame
+    
+    # Spacing
+    padding = 12
+    horizontal_padding = 12
+    text_icon_padding = 12
+    
+    # Behavior
+    word_wrap = yes
+    ignore_newline = no
+    show_indicators = yes
+    timeout = 5
+
+# TokyoNight colors for dunst
+# For more configuration options see https://github.com/dunst-project/dunst/blob/master/dunstrc
+
+[urgency_low]
+    background = "#16161e"
+    foreground = "#c0caf5"
+    frame_color = "#292e42"
+
+[urgency_normal]
+    background = "#1a1b26"
+    foreground = "#c0caf5"
+    frame_color = "#292e42"
+
+[urgency_critical]
+    background = "#292e42"
+    foreground = "#db4b4b"
+    frame_color = "#db4b4b""

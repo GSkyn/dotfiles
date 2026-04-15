@@ -1,0 +1,60 @@
+* {
+    /* Colors from your Waybar */
+    bg: #222222;
+    fg: #ebdbb2;
+    black: #000000;
+    red: #ea6962;
+    orange: #e78a4e;
+
+    background-color: @bg;
+    text-color: @fg;
+    font: "GohuFont uni11 Nerd Font Propo 18"; 
+}
+
+window {
+    location: center;
+    anchor: center;
+    width: 50%;
+    x-offset: 0; 
+    y-offset: 0;
+    border: 2px solid;
+    border-color: @orange; 
+    border-radius: 0;
+    padding: 20px; 
+}
+
+mainbox {
+    children: [listview];
+}
+
+listview {
+    /* 4 columns and 1 line creates a perfect horizontal row */
+    columns: 4;
+    lines: 1;
+    spacing: 20px; /* Space between the buttons */
+    layout: vertical; /* Keep this vertical so the column grid works properly */
+    fixed-height: true;
+}
+
+element {
+    padding: 6px 10px;
+    spacing: 10px;
+    border: 2px solid;
+    border-color: transparent;
+    background-color: @bg;
+}
+
+element selected {
+    background-color: @red;
+}
+
+element-text {
+    horizontal-align: 0.5; /* Centers text inside the button */
+    vertical-align: 0.5;
+    background-color: inherit; 
+    text-color: inherit;
+}
+
+element-text selected {
+    text-color: @black;
+}

@@ -1,0 +1,105 @@
+configuration {
+    /* Ensure the correct font is loaded here too */
+    font: "GohuFont uni14 Nerd Font 12";
+    show-icons: true;
+}
+
+@theme "/dev/null"
+
+* {
+    /* Unified Stitched Palette */
+    bg: #222222;
+    bg-alt: #3c3836;
+    fg: #ebdbb2;
+    black: #000000;
+    green: #8ec07c;
+    orange: #e78a4e;
+    border-dark: #1d2021;
+
+    background-color: transparent;
+    text-color: @fg;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+/* The Main Window */
+window {
+    width: 40%;
+    background-color: @bg;
+    border: 3px solid;
+    border-color: @border-dark;
+    padding: 10px;
+}
+
+mainbox {
+    spacing: 12px;
+}
+
+/* Stitched Input Block (Matches drun but uses Orange) */
+inputbar {
+    spacing: 0px;
+    background-color: @bg;
+    border: 2px solid;
+    border-color: @border-dark;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    background-color: @orange;
+    text-color: @black;
+    padding: 8px 14px;
+    border: 0px 2px 0px 0px;
+    border-color: @border-dark;
+}
+
+entry {
+    background-color: @bg-alt;
+    text-color: @fg;
+    padding: 8px 12px;
+    placeholder: "Search Wallpapers...";
+    vertical-align: 0.5;
+}
+
+/* The Grid */
+listview {
+    columns: 4;
+    lines: 3;
+    spacing: 12px;
+    layout: vertical;
+    fixed-columns: true;
+    border: 0px;
+}
+
+/* Individual Wallpaper "Cards" */
+element {
+    orientation: vertical;
+    padding: 10px;
+    spacing: 10px;
+    background-color: @bg-alt;
+    border: 2px solid;
+    border-color: @border-dark;
+}
+
+/* Selected Wallpaper Card */
+element selected.normal {
+    background-color: @green;
+    border-color: @border-dark;
+}
+
+element-icon {
+    size: 10em;
+    horizontal-align: 0.5;
+    background-color: transparent;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    background-color: transparent;
+    text-color: inherit;
+}
+
+element-text selected {
+    text-color: @black;
+}
